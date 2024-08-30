@@ -1,3 +1,4 @@
+"""
 The MIT License (MIT)
 
 Copyright (c) 2015-present Rapptz
@@ -19,3 +20,20 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
+"""
+
+from __future__ import annotations
+
+import discord
+import pytest
+
+
+@pytest.mark.asyncio
+async def test_add_option():
+    select = discord.ui.Select()
+
+    for i in range(1, 25 + 1):
+        select.add_option(label=str(i), value=str(i))
+
+    with pytest.raises(ValueError):
+        select.add_option(label="26", value="26")

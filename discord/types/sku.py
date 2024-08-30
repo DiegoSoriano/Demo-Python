@@ -1,3 +1,4 @@
+"""
 The MIT License (MIT)
 
 Copyright (c) 2015-present Rapptz
@@ -19,3 +20,34 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
+"""
+
+from __future__ import annotations
+
+from typing import TypedDict, Optional, Literal
+from typing_extensions import NotRequired
+
+
+class SKU(TypedDict):
+    id: str
+    type: int
+    application_id: str
+    name: str
+    slug: str
+    flags: int
+
+
+class Entitlement(TypedDict):
+    id: str
+    sku_id: str
+    application_id: str
+    user_id: Optional[str]
+    type: int
+    deleted: bool
+    starts_at: NotRequired[str]
+    ends_at: NotRequired[str]
+    guild_id: NotRequired[str]
+    consumed: NotRequired[bool]
+
+
+EntitlementOwnerType = Literal[1, 2]

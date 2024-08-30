@@ -1,3 +1,4 @@
+"""
 The MIT License (MIT)
 
 Copyright (c) 2015-present Rapptz
@@ -19,3 +20,37 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
+"""
+
+from .snowflake import Snowflake
+from typing import Literal, Optional, TypedDict
+from typing_extensions import NotRequired
+
+
+class AvatarDecorationData(TypedDict):
+    asset: str
+    sku_id: Snowflake
+
+
+class PartialUser(TypedDict):
+    id: Snowflake
+    username: str
+    discriminator: str
+    avatar: Optional[str]
+    global_name: Optional[str]
+    avatar_decoration_data: NotRequired[AvatarDecorationData]
+
+
+PremiumType = Literal[0, 1, 2, 3]
+
+
+class User(PartialUser, total=False):
+    bot: bool
+    system: bool
+    mfa_enabled: bool
+    locale: str
+    verified: bool
+    email: Optional[str]
+    flags: int
+    premium_type: PremiumType
+    public_flags: int
