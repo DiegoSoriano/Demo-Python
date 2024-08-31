@@ -6,5 +6,5 @@ This should be a copy of https://github.com/Rapptz/discord.py
 
 This will now be branched from this point onwards
 
-## Purpose
-This change is conflicting with Github
+## Repository Purpose
+This is just a test project, with a default README
