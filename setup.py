@@ -7,7 +7,7 @@ def derive_version() -> str:
         version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read(), re.MULTILINE).group(1)
 
     if not version:
-        raise RuntimeError('version is not set')
+        raise RuntimeError('version is not set, fix it')
 
     if version.endswith(('a', 'b', 'rc')):
         # append version identifier based on commit count
